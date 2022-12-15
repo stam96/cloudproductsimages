@@ -187,7 +187,6 @@ router.put(
   "/products/:id",
   isIDmongoProduct,
   validationResultExpress,
-  accessFiles,
   updateProductsId
 );
 
