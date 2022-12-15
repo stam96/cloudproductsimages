@@ -15,19 +15,18 @@ import { validationResultExpress } from "../middlewares/expressValidate/errorVal
 import { accessFiles } from "../middlewares/fileload/requiredFileImage.js";
 const router = Router();
 
-
 /**
  * @swagger
  *  /api/v1/products/:
  *   post:
  *      tags: [tb_products]
- *      summary: creacion de nuevo producto 
- *      description: Añadir un nuevo producto 
- *      requestBody:        
- *          description: Crear un nuevo producto               
- *          content:               
- *              application/json:               
- *                  schema:               
+ *      summary: creacion de nuevo producto
+ *      description: Añadir un nuevo producto
+ *      requestBody:
+ *          description: Crear un nuevo producto
+ *          content:
+ *              application/json:
+ *                  schema:
  *                      $ref: "#components/schemas/tb_products"
  *          required: true
  *      consumes:
@@ -38,17 +37,17 @@ const router = Router();
  *            format: binary
  *            type: string
  *            description: image
- *            schema:    
+ *            schema:
  *              type: file
  *              required: true
- *      responses:   
+ *      responses:
  *          "200":
  *              description: Producto creado correctamente
  *          "400":
- *              description: Producto ya existente    
+ *              description: Producto ya existente
  *          "500":
- *              description: Error interno del servidor.      
- *                          
+ *              description: Error interno del servidor.
+ *
  */
 router.post(
   "/products",

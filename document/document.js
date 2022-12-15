@@ -7,7 +7,8 @@ const docoptions = {
     },
     servers: [
       {
-        url: "http://localhost:3000",
+        //url: "http://localhost:3000",
+        url: "https://cloudproductsimages-production.up.railway.app",
         description: "url servidor",
       },
     ],
