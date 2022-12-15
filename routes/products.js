@@ -146,7 +146,6 @@ router.delete(
   "/products/:id",
   isIDmongoProduct,
   validationResultExpress,
-  accessFiles,
   deleteProductsId
 );
 
@@ -187,6 +186,7 @@ router.put(
   "/products/:id",
   isIDmongoProduct,
   validationResultExpress,
+  accessFiles,
   updateProductsId
 );
 
