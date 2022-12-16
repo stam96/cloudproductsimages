@@ -7,6 +7,7 @@ import fileUpload from "express-fileupload";
 import { buscador, category, products } from "../routes/index.js";
 import { db } from "../database/mongoDb.js";
 import * as dotenv from 'dotenv'
+import { noEncontrado } from "../helpers/Error/error404.js";
 dotenv.config()
 export class Server {
     constructor() {
@@ -34,11 +35,13 @@ export class Server {
         //Route from document swagger
         this.app.use("/documentacion", swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(docoptions)));
         this.app.use(fileUpload({ useTempFiles : true, tempFileDir : '/tmp/'})) 
-    }
+    }   
     routes() {
         this.app.use("/api/v1", products);
         this.app.use("/api/v1", category);  
-        this.app.use("/api/v1", buscador);  
+        this.app.use("/api/v1", buscador);
+        //Ruta no encontrada  
+        this.app.use(noEncontrado)
     }
     async mongoDb(){
         await db();
