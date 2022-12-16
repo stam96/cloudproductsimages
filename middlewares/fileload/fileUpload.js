@@ -5,6 +5,7 @@ export const uploadFiles = (files, allowsExtensions = ["jpg", "png"]) => {
   return new Promise((resolve, reject) => {
     const { image } = files;
     const cortarNombre = image.name.split(".").at(-1);
+    console.log(cortarNombre)
     if (!allowsExtensions.includes(cortarNombre)) {
       reject({
         msg: "Extension no permitida debe incluir " + allowsExtensions,

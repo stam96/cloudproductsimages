@@ -4,8 +4,7 @@ import {
   deleteProductsId,
   getProducts,
   getProductsId,
-  updateProductsId,
-  cargarArchivoImg,
+  updateProductsId
 } from "../controllers/index.js";
 import {
   validateProducts,
@@ -23,23 +22,11 @@ const router = Router();
  *      summary: creacion de nuevo producto
  *      description: Añadir un nuevo producto
  *      requestBody:
- *          description: Crear un nuevo producto
- *          content:
- *              application/json:
- *                  schema:
- *                      $ref: "#components/schemas/tb_products"
- *          required: true
- *      consumes:
- *          - multipart/form-data
- *      parameters:
- *          - in: formData
- *            name: image
- *            format: binary
- *            type: string
- *            description: image
- *            schema:
- *              type: file
- *              required: true
+ *         content:
+ *          application/json:
+ *                      schema:
+ *                         $ref: "#components/schemas/tb_products" 
+ *                         required: true  
  *      responses:
  *          "200":
  *              description: Producto creado correctamente
@@ -53,7 +40,6 @@ router.post(
   "/products",
   validateProducts,
   validationResultExpress,
-  accessFiles,
   createProducts
 );
 
@@ -163,13 +149,14 @@ router.delete(
  *            schema:
  *              type: string
  *      requestBody:
- *        required: true
- *        description: Actualizar un producto
  *        content:
- *           application/json:
+ *            multipart/form-data:
  *              schema:
- *                 type: object
- *                 $ref: "#components/schemas/tb_products"
+ *                type: object
+ *                properties:
+ *                  image:
+ *                    type: string
+ *                    format: binary
  *      responses:
  *        "200":
  *              description: Producto actualizado correctamente.
@@ -189,5 +176,5 @@ router.put(
   updateProductsId
 );
 
-router.post("/upload", accessFiles, cargarArchivoImg);
+//router.post("/upload", accessFiles, cargarArchivoImg);
 export { router };

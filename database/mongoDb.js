@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-//const uri = "mongodb://localhost:27017/dbecommerce"
-const uri = process.env.DB_MONGO;
+const uri = "mongodb://localhost:27017/dbecommerce"
+//const uri = process.env.DB_MONGO;
 export const db = async ()=>{
     try {
         //New Line set db mongoose

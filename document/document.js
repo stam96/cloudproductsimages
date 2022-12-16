@@ -7,8 +7,8 @@ const docoptions = {
     },
     servers: [
       {
-        //url: "http://localhost:3000",
-        url: "https://cloudproductsimages-production.up.railway.app",
+        url: "http://localhost:3000",
+        //url: "https://cloudproductsimages-production.up.railway.app",
         description: "url servidor",
       },
     ],
@@ -39,7 +39,7 @@ const docoptions = {
         },
         tb_products: {
           type: "object",
-          required: ["nombre", "descripcion", "precio", "rating", "categoria", "image"],
+          required: ["nombre", "descripcion", "precio", "rating", "categoria"],
           properties: {
             nombre: {
               type: "string",
@@ -67,7 +67,8 @@ const docoptions = {
               example: "6399e2a7acce2e8d88e0a233",
             },
             image:{
-              type: "string"
+              type: "string",
+              example: null
             }
           },
         }

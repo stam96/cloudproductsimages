@@ -1,5 +1,5 @@
 import express from "express"
-import cors from "cors"
+//import cors from "cors"
 import docoptions from "../document/document.js"
 import swaggerUi from "swagger-ui-express"
 import swaggerJSDoc from "swagger-jsdoc";
@@ -19,7 +19,6 @@ export class Server {
     middlewares() {
         //Read json format - leer formato json
         this.app.use(express.json());
-                
         // let  whitelist = [process.env.HOST1, "http://localhost:3000/api/v1"];
         // this.app.use(cors({
         //     origin: function (origin, callback) {
@@ -34,7 +33,7 @@ export class Server {
         // }));
         //Route from document swagger
         this.app.use("/documentacion", swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(docoptions)));
-        this.app.use(fileUpload({ useTempFiles : true, tempFileDir : '/tmp/'}))
+        this.app.use(fileUpload({ useTempFiles : true, tempFileDir : '/tmp/'})) 
     }
     routes() {
         this.app.use("/api/v1", products);

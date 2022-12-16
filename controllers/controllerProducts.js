@@ -2,6 +2,8 @@ import { request, response } from "express";
 import {v2 as cloudinary} from "cloudinary";
 import * as dotenv from 'dotenv'
 dotenv.config()
+import * as url from "url";
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 //import { uploadFiles } from "../middlewares/fileload/fileUpload.js";
 import { modelProduct } from "../models/Products.js";
 
@@ -15,7 +17,6 @@ cloudinary.config({
 
 const createProducts = async (req = request, res = response) => {
   try {
-    //console.log(req.files)
     const { nombre, descripcion, image, precio, rating, category } = req.body;
     const products = new modelProduct({
       nombre,
@@ -25,11 +26,10 @@ const createProducts = async (req = request, res = response) => {
       image,
       category,
     });
-
     //Subir archivos a cloudinary
-    const {tempFilePath} = req.files.image;
-    const {secure_url} = await cloudinary.uploader.upload(tempFilePath)
-    products.image = secure_url;
+    //const {tempFilePath} = req.files.image;
+    //const {secure_url} = await cloudinary.uploader.upload(tempFilePath)
+    //products.image = secure_url;
     await products.save();
     return res.status(200).json({ msg: "Producto creado correctamente.", nombre:products.nombre });
   } catch (error) {
@@ -49,6 +49,7 @@ const getProducts = async (req = request, res = response) => {
       modelProduct.find({estado:true}).populate("categoria").limit(limit).skip(desde),
       modelProduct.count(query),
     ]);
+    //console.log(products)
     return res.status(200).json({ total, products });
   } catch (error) {
     return res
@@ -101,6 +102,7 @@ const deleteProductsId = async (req = request, res = response) => {
 
 const updateProductsId = async (req = request, res = response) => {
   try {
+    //console.log(req.files.image)
     const { id } = req.params;
     const { nombre } = req.body;
     const products = await modelProduct.findByIdAndUpdate(
@@ -127,20 +129,13 @@ const updateProductsId = async (req = request, res = response) => {
   }
 };
 
-const cargarArchivoImg = async (req=request, res=response)=>{
-try {
-    const {tempFilePath} = req.files.image;
-    const {secure_url} = await cloudinary.uploader.upload(tempFilePath)
-    console.log(respuesta)
-} catch (error) {
-  res.json(error)
-}
-}
+/*const cargarArchivoImg =  (req=request, res=response)=>{
+  //console.log(req.files.image)
+}*/
 export {
   createProducts,
   getProducts,
   getProductsId,
   deleteProductsId,
-  updateProductsId,
-  cargarArchivoImg
+  updateProductsId
 };

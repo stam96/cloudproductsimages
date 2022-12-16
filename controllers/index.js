@@ -1,5 +1,5 @@
 import { createCategory, getCategorys, getCategoryId, deleteCategoryId, updateCategoryId } from "./controllerCategory.js";
-import { createProducts, getProducts, getProductsId, updateProductsId, deleteProductsId , cargarArchivoImg  } from "./controllerProducts.js";
+import { createProducts, getProducts, getProductsId, updateProductsId, deleteProductsId  } from "./controllerProducts.js";
 
 export {
   createProducts,
@@ -12,5 +12,5 @@ export {
   getCategorys,
   deleteCategoryId,
   updateCategoryId,
-  cargarArchivoImg
+  //cargarArchivoImg
 };
