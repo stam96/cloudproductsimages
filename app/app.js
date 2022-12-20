@@ -1,5 +1,5 @@
 import express from "express"
-//import cors from "cors"
+import cors from "cors"
 import docoptions from "../document/document.js"
 import swaggerUi from "swagger-ui-express"
 import swaggerJSDoc from "swagger-jsdoc";
@@ -20,6 +20,7 @@ export class Server {
     middlewares() {
         //Read json format - leer formato json
         this.app.use(express.json());
+        this.app.use(cors())
         // let  whitelist = [process.env.HOST1, "http://localhost:3000/api/v1"];
         // this.app.use(cors({
         //     origin: function (origin, callback) {
