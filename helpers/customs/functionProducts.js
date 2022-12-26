@@ -24,7 +24,7 @@ export const noexistsProducts = async (id) => {
     //console.log(category)
     if (!products) {
         throw new Error("Producto no existente")
-    }
+    } 
     //console.log(category)
     return true
 }
