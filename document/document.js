@@ -64,7 +64,7 @@ const docoptions = {
             category  : {
               type: "string",
               description: "Object Id de una categoria valida y existente",
-              example: "639c8d89ac3867cd7fa4f90e",
+              example: "63ac71299425217fc7c9d025",
             },
             image:{
               type: "string",
