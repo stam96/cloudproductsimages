@@ -75,12 +75,12 @@ const getProductsId = async (req = request, res = response) => {
 const deleteProductsId = async (req = request, res = response) => {
   try {
     const { id } = req.params;
-    /*const products = await modelProduct
+    const products = await modelProduct
       .findByIdAndDelete(id)
-      .populate("categoria");*/
-    const products = await modelProduct.findByIdAndUpdate(id, {
+      .populate("categoria");
+    /*const products = await modelProduct.findByIdAndUpdate(id, {
       estado: false,
-    });
+    });*/
     if (products.image) {
       const nombreSplit = products.image.split("/")
       const nombre = nombreSplit.at(-1)

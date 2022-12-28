@@ -55,10 +55,10 @@ const getCategoryId = async (req = request, res = response) => {
 const deleteCategoryId = async (req = request, res = response) => {
   try {
     const { id } = req.params;
-    //const category = await modelCategory.findByIdAndDelete(id);
-    const category = await modelCategory.findByIdAndUpdate(id, {
+    const category = await modelCategory.findByIdAndDelete(id);
+    /*const category = await modelCategory.findByIdAndUpdate(id, {
       estado: false,
-    });
+    });*/
     return res.status(200).json({msg:"Categoria eliminada correctamente.", nombre:category.nombre});
   } catch (error) {
     return res
