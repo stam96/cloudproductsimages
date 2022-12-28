@@ -6,6 +6,7 @@ import * as url from "url";
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 //import { uploadFiles } from "../middlewares/fileload/fileUpload.js";
 import { modelProduct } from "../models/Products.js";
+import { modelCategory } from "../models/Categorys.js";
 
 //Configuracion cloudinary
 cloudinary.config({ 
@@ -26,6 +27,11 @@ const createProducts = async (req = request, res = response) => {
       image,
       category,
     });
+    /*
+    const categoria = await modelCategory.findById(category)
+    if(!categoria){
+      return res.status(404).json({msg:"Categoria no existente"})
+    }*/
     //Subir archivos a cloudinary
     //const {tempFilePath} = req.files.image;
     //const {secure_url} = await cloudinary.uploader.upload(tempFilePath)
